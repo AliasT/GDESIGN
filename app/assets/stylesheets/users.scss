@@ -1,0 +1,426 @@
+html {
+  
+}
+
+body {
+  padding-top: 70px;
+  overflow-y: scroll;
+}
+
+.navbar {
+  perspective: 600px;
+  background: rgb(28, 120, 200);
+  .progress-bar-container {
+    width: 100%;
+    height: 2px;
+    background: rgb(28, 120, 200);
+    .progress-bar {
+      z-index: 1000;
+      width: 0%;
+      background: red;
+    }
+  }
+}
+
+.navbar-nav > li > a, .navbar-brand {
+  color: #fff !important;
+}
+
+.nav-link:after {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  border: solid #fff 2px;
+  content: ' ';
+}
+
+.icon-bar {
+  background-color: #fff !important;
+}
+
+.form-base {
+//  height: 100%;
+  position: relative;
+  padding: 0px;
+  overflow: hidden;
+  
+  //页面标识
+  .data-sign {
+    display: none;
+  }
+  
+  .data-sign-1 {
+    left: -100%;
+  }
+  //浮动元素的外边距问题
+  .form-container {
+    border-radius: 5px;
+    width: 200%;
+    position: relative;
+    .middle-form {
+      border-radius: 5px;
+      position: relative;
+      padding: 40px;
+      width: 49%;
+      margin: 3.5px;
+      float: left;
+      .btn-info {
+        margin: -1px;
+        width: 50%;
+      }
+      .form-group {
+        position: relative;
+      }
+      .glyphicon {
+        font-size: 1.2em;
+        position: absolute;
+        top: 55%;
+        right: 5px;
+      }
+      .user-right {
+        color: green;
+      }
+      .user-wrong {
+        color: rgb(218, 150, 150);
+      }
+      .form-title {
+        position: relative;
+        margin: 0;
+        margin: -40px -40px 20px -40px;
+        text-align: center;
+        box-shadow: 0 7px 10px 0px #8293D8;
+        letter-spacing: 0.2em;
+        background: #60D4D4;
+        
+        &:after {
+          content: '';
+          position: absolute;
+          display: block;
+          top: 100%;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          border-color: #60D4D4 transparent transparent transparent;
+          border-width: 20px 188.5px 20px 188.5px;
+          border-style: solid;
+        }
+        h1 {
+          padding: 5px 10px;
+        }
+
+      }
+    }
+  }
+}
+
+
+.action {
+  margin-top: 10px;
+  li {
+    float: right;
+    a {
+      &:hover, &:focus {
+        background: #fff;
+      }
+      span+span {
+        position: relative;
+        top: -1px;
+      }
+      span {
+        color: gainsboro;
+      }
+    }
+  }
+  .post-date, .comment-date {
+    color: #e3e3e3;
+    padding: 0;
+    margin: auto;
+    line-height: 40px;
+    float: left;
+  }
+}
+
+
+
+.hint {
+  margin-bottom: 10px;
+}
+
+.actual-content {
+  padding: 20px 30px;
+  margin: 15px 20px;
+  background: #f2f2f5;
+}
+
+.resource-content {
+  padding: 10px 20px;
+}
+
+.content-area {
+  resize: none;
+}
+
+.list-group-item {
+  margin-bottom: 20px;
+}
+
+.col-md-2 {
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+.statics {
+  box-shadow: 0px 0px 1px 1px #ccc;
+  a {
+    border-radius: 0;
+    text-align: center;
+  }
+  li + li {
+    margin-top: 0;
+  }
+}
+
+
+@media (min-width: 767px) {
+  .col-md-2 .statics {
+    position: fixed;
+    a {
+      padding: 10px 50px !important;
+      z-index: 1000;
+    }
+    
+    li:not(.follow-action) a {
+      &:after {
+        z-index: -10000;
+        position: absolute;
+        height: 100%;
+        top: 0%;
+        left: -1px;
+        right: 140%;
+        background: #4c8efa;
+        content: '';
+        transition: all 0.3s;
+      }
+    }
+
+    li:not(.follow-action) a:hover {
+      background: #fff;
+      color: #fff;
+      &:after {
+        right: -1px;
+      }
+    }
+  }
+
+  .edit_user {
+    width: 60%;
+  }
+
+  .col-md-6 {
+    margin-left: 30px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .col-md-2 .statics {
+    text-align: center;
+    border-width: 1px 4px;
+    li {
+      display: inline-block;
+      a {
+        padding: 5px 8px;
+        border-radius: 0;
+      }
+    }
+  }
+
+  .navbar-form {
+    margin: 0;
+  }
+}
+
+
+.row {
+  padding: 5px 8px;
+}
+
+input[type="submit"] {
+  padding: 6px 20px;
+}
+
+
+.form-control {
+  border-color: #66afe9;
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+
+.alert {
+  margin-bottom: 0;
+}
+
+.col-md-6 {
+  padding: 20px;
+  border: solid 2px rgba(12, 95, 247, 0.3);
+  background: rgba(12, 95, 247, 0.02);
+  .list-group {
+    margin-bottom: 0;
+    .list-group-item {
+      box-shadow: 0 0 1px 1px rgba(90, 172, 244, 0.5) inset;
+      border: none;
+      .profile img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+  input[type="submit"] {
+    float: right;
+    margin-top: 7px;
+  }
+  
+  
+//  联系人列表间隔
+  .statics + .statics {
+    margin-top: 15px;
+  }
+  
+  .statics {
+    text-align: center;
+    border-width: 1px 4px;
+    li {
+      display: inline-block;
+      a {
+        padding: 5px 8px;
+        border-radius: 0;
+      }
+    }
+    img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  
+  #new_post {
+    background: aliceblue;
+    // border: 3px solid #b9d0fb;
+    box-shadow: 0 0 1px 1px #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  .post-content {
+    display: inline-block;
+    padding: 0px 20px;
+    width: 85%;
+    @media (max-width:767px) {
+      width: 80%;
+    }                 
+  }
+  * {
+    word-wrap: break-word;  /* never forget about */
+  }
+  .profile {
+    float: left;
+    box-shadow: 0 0px 1px 1px #ccc;
+    a {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  .comment-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .comment-content {
+    float: left;
+    padding: 0 20px;
+  }
+
+}
+
+
+.col-md-4 .list-group-item {
+  margin-top: 15px;
+  border: solid 1px rgba(12, 95, 247, 0.3);
+}
+
+
+.col-md-12 {
+  padding: 5px 10px;
+}
+
+
+.message-time {
+  text-align: right;
+  padding-right: 20px;
+  color: #ccc;
+}
+
+
+.delete-msg  {
+  float: right;
+}
+
+
+.users-list {
+  position: absolute;
+  .list-group-item {
+    width: 196px;
+    margin: 0;
+    padding: 6px 12px;
+    border: none;
+    a {
+      display: block;
+    }
+  }
+}
+
+
+.follow-action {
+  a {
+    margin: 0 -1px;
+    text-align: center;
+    border-radius: 0 !important;
+    color: #fff;
+  }
+  .al-follow {
+    &:hover {
+      background: green;
+    }
+    background: green;
+  }
+  .not-follow {
+    background: rgb(76, 142, 250);
+    &:hover {
+      background: rgb(76, 142, 250) !important;
+    }
+  }
+}
+
+
+/*
+ * 用户页面edit要样式
+ */
+.edit_user {
+  margin: 0 auto;
+  padding: 20px;
+  #user_avatar {
+    visibility: hidden;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  input[type="submit"] {
+    @media (max-width: 767px) {
+      width: 100%;
+      float: none;
+    }
+  }
+}

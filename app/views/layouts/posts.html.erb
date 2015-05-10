@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>GDesign</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="progress-bar-container">
+  <div class="progress-bar"></div>
+</div>
+  
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to '首页', user_path(get_u) if get_u %></li>
+        <li><%= link_to '消息', messages_user_path(get_u) if get_u %></li>
+        <li><%= link_to '热门', hot_path %></li>
+      </ul>
+      <ul class="nav navbar-right navbar-nav">
+        <li>
+        <% if get_u %>
+          <%= link_to '退出', signout_path %>
+        <% else %>
+          <%= link_to '登录', users_path %>  
+        <% end %>  
+        </li>  
+      </ul>
+      <form class="navbar-form navbar-right" role="search" action="/users/search" method="POST">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+      </form> 
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+  <div class="row">
+    <%= yield %>
+  </div>
+</div>
+
+
+</body>
+</html>

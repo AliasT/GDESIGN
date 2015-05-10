@@ -1,0 +1,15 @@
+<div class="col-md-2 hidden-xs">
+  <%= render partial: 'users/statics', locals: { user: @user } %>
+</div>
+
+<div class="col-md-6">
+  <% if @user.followers.count - 1 == 0 %>
+    <div class="alert alert-info">还没有粉丝</div>
+  <% else %>
+    <div class="list-group followers-list">
+    <% @user.followers.where.not(fid: @user.id).each do |f| %>
+      <%= render partial: 'users/statics', locals: { user: User.find(f.fid) } %>
+    <% end %>
+  </div>  
+  <% end %>
+</div>

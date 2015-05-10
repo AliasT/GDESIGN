@@ -1,0 +1,31 @@
+
+
+
+<div class="col-md-2">
+    <%= render partial: 'users/statics', locals: { user: @user } %>
+</div>            
+
+
+
+
+<div class="col-md-6">
+    <%= form_for @user do |f| %>
+      <div class="form-group">
+        <%= f.label :name,  '用户名' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :avatar, '头像' %>
+        <%= f.file_field :avatar, class: 'form-control' %>
+        <%= f.hidden_field :avatar_cache %>
+        <%= image_tag(@user.avatar_url(:big), { class: 'form-control'}) %>
+      </div>
+
+        <%= f.submit 'apply', class: 'btn btn-success' %>
+    <% end %>
+</div>
+
+
+
+
+

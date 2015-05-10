@@ -1,0 +1,12 @@
+<div class="col-md-2">
+  <%= render partial: 'users/statics', locals: { user: @user } %>
+  <!--此处用ajax添加关注-->
+
+</div>
+
+<div class="col-md-6">
+  <ul class="list-group">
+    <% posts = @user.posts.order(created_at: :desc) %>
+    <%= render partial: 'post', layout: 'users/post_list', collection: posts %>
+  </ul>
+</div>

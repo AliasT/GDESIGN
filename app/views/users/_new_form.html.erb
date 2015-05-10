@@ -1,0 +1,7 @@
+
+
+<%= form_for @user.posts.new, url: user_posts_path(@user[:id]), html: { class: 'clearfix'} do |f| %>
+    <!--<div class="content-area" contenteditable="true">a <span class="target-user">b</span> c d</div>-->
+    <%= f.text_area :content, class: 'form-control content-area', autocomplete: 'off', resize: 'none' %>
+    <%= f.submit class: 'btn', type: 'submit', value: '发布', disabled: '' %>
+<% end %>

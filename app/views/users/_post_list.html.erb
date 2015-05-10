@@ -1,0 +1,27 @@
+
+<li class="list-group-item">
+  <div class="profile">
+    <%= image_tag(post.user.avatar_url(:small), { class: 'avatar' }) %>
+  </div>
+  <div class="post-content">
+    <div><%= link_to post.user.name, user_posts_path(post.user) %></div>  
+    <div><%= get_new_content(post.content).html_safe %></div>
+  </div>
+  <i class="clearfix"></i>
+  <ul class="action nav list-group clearfix">
+    <li class="post-date"><%= post.created_at.to_s[0..-10] %></li>
+    <li>
+      <%= link_to(post_comments_path(post), class: 'comment') do %>
+        <span class="glyphicon glyphicon-comment"></span>
+        <span class=""><%= ' ' + post.comments.count.to_s %></span>
+      <% end %>
+    </li>
+    <li data-source="<%= ups_post_path(post) %>">
+      <%= link_to('javascript:void(0);', { class: 'up' + get_class(post.ups, 'al-up', 'uper')}) do %>
+        <span class="glyphicon glyphicon-thumbs-up"></span>
+        <span><%= post.ups.count %></span>
+      <% end %>
+    </li>
+    <%= content_for :d %>
+  </ul>
+</li>

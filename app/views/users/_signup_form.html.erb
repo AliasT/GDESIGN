@@ -1,0 +1,31 @@
+<div class="middle-form">
+ <!--  提示信息-->
+  <% if flash[:msg1] %>
+    <div class="alert alert-info"><%= flash[:msg] %></div>
+  <% end %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-info">不能为空或密码输入不一致</div>
+  <% end %>
+  
+  <!--  表单主体-->
+  <div class="form-title"><h1>Manage#signup</h1></div>
+  <%= form_for @user, url: { controller: 'users', action: 'create' } do |f| %>
+    <div class="form-group validate-input">
+      <%= f.label :name, value: '用户名', for: 'user_name'%>
+      <%= f.text_field :name, class: 'form-control new-user-name' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, value: '密码', for: 'user_password'%>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, value: '再输一次', for: 'user_password_confirmation' %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
+    <div>
+      <%= f.submit class: 'btn btn-info', type: 'submit', value: '注册' %>
+      <%= link_to '已有帐号', 'javascript:void(0)', class: 'sign btn btn-info' %>    
+    </div>
+
+  <% end %>
+</div>

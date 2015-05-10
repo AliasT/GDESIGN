@@ -1,0 +1,88 @@
+<% info = '<em>抱歉已删除</em>'.html_safe %>
+
+
+
+
+
+
+<!--1.赞了某条post   2.直接@-->
+<% if message.m_type == 1 || message.m_type == 2%>
+    <% t = message.m_type == 1 ? '赞了我':'提到了我' %>
+
+    <% content_for :content_type, flush:true do %>
+     <%= t %>
+    <% end %>
+    <% content_for :content, flush: true do %>
+      <% begin post = Post.find(message.r_id) %>
+        <%= link_to post.user.name, user_posts_path(post.user) %>:
+        <%= link_to post.content, post_comments_path(post), class: 'content-link' %>
+      <% rescue %>
+        <%= info %>
+      <% end %>
+    <% end %>
+
+
+
+
+
+
+
+<!--3.回复某条评论-->
+<% elsif message.m_type == 3 %>
+    <% content_for :content_type, flush: true do %>
+      <% begin t_c = Comment.find(message.t_id) %>
+        <%= t_c.content %>
+      <% rescue ActiveRecord::RecordNotFound %>
+        <%= info %>
+      <% end %>
+    <% end %>
+    <% content_for :content, flush: true do %>
+      <% begin com = Comment.find(message.r_id) %>
+        <% t_u = User.find(com.commenter) %>
+        <%= link_to t_u.name, user_posts_path(t_u) %>:
+        <%= link_to Comment.find(message.r_id).content, post_comments_path(com.post), class: 'content-link' %>
+      <% rescue ActiveRecord::RecordNotFound %>
+        <%= info %>
+      <% end %>
+    <% end %>
+
+
+
+
+
+<% elsif message.m_type == 4 %>
+    <% content_for :content_type, flush: true do %>
+        <% '赞了我的评论' %>
+    <% end %>
+
+    <% content_for :content, flush: true do %>
+        <% begin %>
+        <% c = Comment.find(message.r_id) %>
+        <% u = User.find(c.commenter) %>
+        <%= link_to u.name, user_posts_path(u) %>
+        <%= link_to c.content, post_comments_path(c.post) %>
+        <% rescue %>
+          <%= info %>
+        <% end %>
+    <% end %>
+
+<% elsif message.m_type == 5 %>
+    <% content_for :content_type, flush: true do %>
+      <% begin %>
+        <%= Comment.find(message.t_id).content %>
+      <% rescue %>
+        <% info %>
+      <% end %>
+    <% end %>
+
+    <% content_for :content, flush: true do %>
+      <% begin %>
+        <% post = Post.find(message.r_id) %>
+        <span>评论了我:</span>
+        <%= link_to post.content, post_comments_path(post) %>
+      <% rescue %>
+        <%= info %>
+      <% end %>
+    <% end %>
+<% end %>
+

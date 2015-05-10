@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  m_type: 1
+  r_id: 1
+  t_id: 1
+  from_id: 1
+  user_id: 
+
+two:
+  m_type: 1
+  r_id: 1
+  t_id: 1
+  from_id: 1
+  user_id: 

@@ -1,0 +1,21 @@
+<!-- 用户资料卡片 -->
+<ul class="nav nav-stacked nav-pills statics clearfix">
+  <li><a href="<%= edit_user_path(user) %>"><%= image_tag(user.avatar_url(:small)) %></a></li>
+  <li>
+    <%= link_to user.name, user_path(user) %>
+  </li>
+  <li><%= link_to  '关注 ' + (Follower.where(fid: user.id).count - 1).to_s, user_followers_path(user) %></li>
+  <li><%= link_to '发布 ' + user.posts.count.to_s, user_posts_path(user), class: 'posts-count' %></li>
+  <li><%= link_to '粉丝 ' + (user.followers.count - 1).to_s, user_follows_path(user) %></li>
+  <li class="follow-action">
+    <% if get_u != user %>
+      <% f = user.followers.where(fid: session[:signed]).take %>
+      <% if f %>
+        <%= link_to '已关注', [f.user, f], method: :delete, class:'al-follow' %>
+      <% else %>
+        <%= link_to '关注', [user, 'followers'], method: :create, class:'not-follow' %>
+      <% end %>  
+    <% end %> 
+  </li> <!--  follow-action end -->
+</ul>
+

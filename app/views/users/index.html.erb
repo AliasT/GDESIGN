@@ -1,0 +1,21 @@
+<style>
+  nav {
+      display: none;
+  }
+  body {
+    height: 100%;
+    background: #66AFE9;
+  }
+  .middle-form {
+    background: #fff;
+  }
+</style>
+
+
+<div class="form-base col-md-4 col-md-offset-4">
+  <div class="data-sign"><%= @sign %></div>
+  <div class="form-container clearfix">
+    <%= render partial: 'login_form' %>
+    <%= render partial: 'signup_form' %>  
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="col-md-2">
+ <!--此处用ajax添加关注-->
+</div>
+
+<div class="col-md-6">
+  <ul class="list-group">
+    <% posts = @posts %>
+    <%= render partial: 'users/post', layout: 'users/post_list', collection: posts %>
+  </ul>
+</div>

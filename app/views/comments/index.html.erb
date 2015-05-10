@@ -1,0 +1,16 @@
+<div class="col-md-2 hidden-xs">
+  <%= render partial: 'users/statics', locals: { user: @user } %>
+</div>
+
+<div class="col-md-6 comments-index">
+  <%= render partial: 'users/post', layout: 'users/post_list', locals: {post: @post} %>
+  <%= render 'comment_form' %>
+  <%= render 'comments_list' %>
+</div>
+
+
+<div class="col-md-4">
+
+</div>
+
+

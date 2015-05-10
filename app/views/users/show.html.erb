@@ -1,0 +1,15 @@
+<!--统计表-->
+<div class="col-md-2">
+  <%= render partial: 'statics', locals: { user: @user } %>
+</div>
+
+<div class="col-md-6">
+  <!--新建表单-->
+  <%= render 'new_form' %>
+  <!--展示列表-->
+  <!--如果是当前用户发布显示删除按钮-->
+  <% posts = @p %>
+  <ul class="list-group">
+    <%= render partial: 'post', layout: 'post_list', collection: posts %>
+  </ul>
+</div>

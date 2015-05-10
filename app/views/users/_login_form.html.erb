@@ -1,0 +1,27 @@
+<div class="middle-form">
+  <!--  提示信息-->
+  <% if flash[:msg] %>
+    <div class="alert alert-info hint">
+      <div><%= flash[:msg] %></div>
+    </div>
+  <% end %>
+
+  <!--  表单主体-->
+  <div class="form-title"><h1>Manage#signin</h1></div>
+  <!-- user数组将提交到控制器 signin-->
+  <%= form_for @user, url: { action: 'signin' } do |f| %>
+    <div class="form-group validate-input">
+      <%= f.label :name, value: '用户名', for: 'user_name'%>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group validate-input">
+      <%= f.label :password, value: '密码', for: 'user_password'%>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+    <div>
+      <%= f.submit class: 'btn btn-info', type: 'submit', value: '登录' %>
+      <%= link_to '注册', 'javascript:void(0)', class: 'sign btn btn-info' %>
+    </div>
+    
+  <% end %>
+</div>

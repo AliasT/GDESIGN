@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: xiaobing
+  api_key: '273631627567826'
+  api_secret: wKdHEn0MaF1szYCxse9F7OkqtKs
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: xiaobing
+  api_key: '273631627567826'
+  api_secret: wKdHEn0MaF1szYCxse9F7OkqtKs
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: xiaobing
+  api_key: '273631627567826'
+  api_secret: wKdHEn0MaF1szYCxse9F7OkqtKs
+  enhance_image_tag: true
+  static_image_support: false

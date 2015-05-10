@@ -1,0 +1,14 @@
+<div class="col-md-2">
+  <%= render partial: 'statics', locals: { user: @user } %>
+</div>
+
+
+<div class="col-md-6">
+  <% if @user.messages.count == 0 %>
+    <div class="alert alert-info">暂时没有任何消息</div>
+  <% else %>
+      <ul class="list-group">
+        <%= render partial: 'message', layout: 'message_list', collection: @user.messages.order(created_at: :desc) %>
+      </ul>
+  <% end %>
+</div>

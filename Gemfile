@@ -52,6 +52,6 @@ gem 'mini_magick'
 
 gem 'cloudinary'
 
-# gem 'puma'
+gem 'puma'
 
 ruby '2.0.0'

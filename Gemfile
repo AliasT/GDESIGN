@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -50,4 +50,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'cloudinary'
+
+gem 'puma'
 ruby '2.0.0'

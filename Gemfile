@@ -45,10 +45,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rails_12factor', group: :production
     
-gem 'mini_magick'
-
 gem 'carrierwave'
 
-gem 'cloudinary'
+gem 'mini_magick'
 
+gem 'cloudinary'
 ruby '2.0.0'

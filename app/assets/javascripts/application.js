@@ -253,7 +253,7 @@ $(document).on('page:change', function() {
             console.log('a');
             var $target = $(e.target).parents('form');
             var count = $target.find('.glyphicon-ok').length;
-            if(count > 1) {
+            if(count > 1 || (count == 1 && $target.find('.new-user-name').length == 1 ) {
                 setTimeout(function() {
                     $target.submit();
                 }, 400);

@@ -35,7 +35,7 @@ body {
 
 .navbar-toggle {
   border: none;
-  &:focus, &:active, &visited {
+  &:focus, &:active, &visited, &:hover {
     background: cornflowerblue !important;
   }
 }
@@ -44,13 +44,15 @@ body {
   border: none;
 }
 
-.nav-link:after {
-  position: absolute;
-  bottom: 0px;
-  left: 0;
-  right: 0;
-  border: solid #fff 2px;
-  content: ' ';
+@media (min-width: 767px) {
+  .nav-link:after {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    border: solid #fff 2px;
+    content: ' ';
+  }
 }
 
 .icon-bar {

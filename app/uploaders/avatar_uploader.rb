@@ -19,7 +19,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    '/upload/default.png'
+    'http://res.cloudinary.com/xiaobing/image/upload/v1431255400/16_i6pwqe.png'
   end
 
 

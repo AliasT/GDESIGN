@@ -4,6 +4,9 @@ html {
 
 body {
   padding-top: 70px;
+  @media (max-width: 767px) {
+    padding-top: 55px;
+  }
   overflow-y: scroll;
 }
 
@@ -24,6 +27,21 @@ body {
 
 .navbar-nav > li > a, .navbar-brand {
   color: #fff !important;
+}
+
+.navbar-form {
+  border: none;
+}
+
+.navbar-toggle {
+  border: none;
+  &:focus, &:active, &visited {
+    background: cornflowerblue !important;
+  }
+}
+
+.navbar-collapse {
+  border: none;
 }
 
 .nav-link:after {
@@ -341,7 +359,16 @@ input[type="submit"] {
     float: left;
     padding: 0 20px;
   }
-
+  
+  @media(max-width: 767px) {
+    & {
+      padding: 0;
+      border: 0;
+      form {
+        padding: 0;
+      }
+    }
+  }
 }
 
 

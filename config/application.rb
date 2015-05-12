@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
+
 module GDesign
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -24,5 +26,6 @@ module GDesign
     config.active_record.raise_in_transactional_callbacks = true
     config.time_zone = 'Beijing'
     config.assets.logger = false
+    config.middleware.use Rack::ContentLength
   end
 end

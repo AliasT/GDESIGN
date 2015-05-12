@@ -38,7 +38,7 @@ class PostsController < ApplicationController
         make_message(@post.user, 1, @post.id)
         render plain: 's'
       else
-        @post.ups.where({uper: session[:signed].to_int}).take.destroy
+        @post.ups.where({ uper: session[:signed].to_int }).take.destroy
         render plain: 's'
       end
     end

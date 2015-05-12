@@ -22,16 +22,10 @@
 
 $(document).on('page:change', function() {
     (function(){
-
-    })();
-
-
-
-    (function(){
         $(document).ajaxSuccess(function() {
             setTimeout(function() {
                 $('.progress-bar').css('width', '0%');
-            }, 700);
+            }, 1000);
         });
         $.ajaxSetup({
             xhr: function() { 
@@ -42,7 +36,7 @@ $(document).on('page:change', function() {
                         $bar = $('.progress-bar');
                         var pos = e.loaded;
                         var total = e.total;
-                        $bar.css('width', pos/total * 100 + '%');
+                        $bar.css('width', pos / total * 100 + '%');
                     }
                     return xhr;
                 } catch (e) {}
@@ -55,10 +49,9 @@ $(document).on('page:change', function() {
     $('input').attr({'autocomplete': 'off'});
 
     //
-    var changeStyle = function (e, classToApply, t) {
-        e.preventDefault();
-        var $that = $(e.target).parents('li').first();
-        var href = $that.data('source');
+    var changeStyle = function (e, classToApply, signal) {
+        var $that = $(this);
+        var href = $that.parent('li').data('source');
         var method = '';
         var t = 1;
         //如果没有该类则是create请求
@@ -86,7 +79,7 @@ $(document).on('page:change', function() {
 
     // ajax 操作点赞
     $('.up').on('click', function(e) {
-        changeStyle(e, 'al-up', '.up');
+        changeStyle.call(this, e, 'al-up', '.up');
     });
 
 
@@ -250,14 +243,13 @@ $(document).on('page:change', function() {
 
         $('.middle-form .btn').click(function(e) {
             e.preventDefault();
-            console.log('a');
             var $target = $(e.target).parents('form');
-            var count = $target.find('.glyphicon-ok').length;
-            if(count > 1 || (count == 1 && $target.find('.new-user-name').length == 1 )) {
-                setTimeout(function() {
+            setTimeout(function() {
+                var count = $target.find('.glyphicon-ok').length;
+                if(count > 1 || (count == 1 && $target.find('.new-user-name').length == 1 )) {
                     $target.submit();
-                }, 400);
-            }
+                }
+            }, 400);
         });
     })();
 

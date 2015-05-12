@@ -228,3 +228,4 @@ log/development.log
 Gemfile
 .env
 Gemfile
+th-opt-lib/

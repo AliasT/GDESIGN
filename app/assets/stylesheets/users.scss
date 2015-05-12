@@ -8,6 +8,7 @@ body {
     padding-top: 55px;
   }
   overflow-y: scroll;
+  background: rgba(240, 248, 255, 0.36);
 }
 
 .navbar {
@@ -142,16 +143,20 @@ body {
     a {
       &:hover, &:focus {
         background: #fff;
+        span {
+          color: red;
+        }
       }
       span+span {
         position: relative;
         top: -1px;
       }
       span {
-        color: gainsboro;
+        color: #B2B2B2;
       }
     }
   }
+
   .post-date, .comment-date {
     color: #e3e3e3;
     padding: 0;
@@ -191,6 +196,7 @@ body {
 }
 
 .statics {
+  background: #fff;
   box-shadow: 0px 0px 1px 1px #ccc;
   a {
     border-radius: 0;
@@ -199,6 +205,10 @@ body {
   li + li {
     margin-top: 0;
   }
+  border-color: cadetblue;
+  border-style: solid;
+  border-width: 1px 4px;
+  border-radius: 4px;
 }
 
 
@@ -263,7 +273,7 @@ body {
 
 
 .row {
-  padding: 5px 8px;
+  padding: 3px;
 }
 
 input[type="submit"] {
@@ -311,7 +321,6 @@ input[type="submit"] {
   
   .statics {
     text-align: center;
-    border-width: 1px 4px;
     li {
       display: inline-block;
       a {
@@ -326,11 +335,7 @@ input[type="submit"] {
   }
   
   #new_post {
-    background: aliceblue;
-    // border: 3px solid #b9d0fb;
-    box-shadow: 0 0 1px 1px #ccc;
     margin-bottom: 20px;
-    padding: 10px;
   }
   .post-content {
     display: inline-block;

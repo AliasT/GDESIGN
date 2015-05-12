@@ -267,8 +267,8 @@ th {
 @font-face {
   font-family: 'Glyphicons Halflings';
 
-  src: font-path('fonts/glyphicons-halflings-regular.eot');
-  src: font-path('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), font-path('fonts/glyphicons-halflings-regular.woff2') format('woff2'), font-path('fonts/glyphicons-halflings-regular.woff') format('woff'), font-path('fonts/glyphicons-halflings-regular.ttf') format('truetype'), font-path('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: font-url('fonts/glyphicons-halflings-regular.eot');
+  src: font-url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), font-url('fonts/glyphicons-halflings-regular.woff2') format('woff2'), font-url('fonts/glyphicons-halflings-regular.woff') format('woff'), font-url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), font-url('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;

@@ -25,7 +25,7 @@ $(document).on('page:change', function() {
         $(document).ajaxSuccess(function() {
             setTimeout(function() {
                 $('.progress-bar').css('width', '0%');
-            }, 1000);
+            }, 400);
         });
         $.ajaxSetup({
             xhr: function() { 
@@ -50,8 +50,9 @@ $(document).on('page:change', function() {
 
     //
     var changeStyle = function (e, classToApply, signal) {
+        e.preventDefault();
         var $that = $(this);
-        var href = $that.parent('li').data('source');
+        var href = $that.attr('href');
         var method = '';
         var t = 1;
         //如果没有该类则是create请求
@@ -64,12 +65,16 @@ $(document).on('page:change', function() {
         }
         $.post(href, { m: method },  function (data) {
             if (data == 's') {
-                $that.children('a').addClass(classToApply);
+                $that.addClass(classToApply);
                 var $span = $that.find('span').eq(1);
                 var v = parseInt($span.html());
                 $span.html(v + t);
-                if(t==1) { $that.addClass(classToApply); }
-                else { $that.removeClass(classToApply);}
+                if(t==1) { 
+                    $that.addClass(classToApply); 
+                }
+                else {
+                 $that.removeClass(classToApply);
+             }
             } else {
                 $('body').html($(data));
             }
@@ -84,7 +89,7 @@ $(document).on('page:change', function() {
 
 
     // ajax 顶你
-    $('.ding span').on('click', function(e) {
+    $('.ding').on('click', function(e) {
         changeStyle(e, 'al-ding','.ding');
     });
 
@@ -100,7 +105,7 @@ $(document).on('page:change', function() {
 
     $('.sub-comment').on('click', function(e) {
         $('.sub-form').remove();
-        var $target = $(e.target);
+        var $target = $(this);
         var href = $target.attr('href');
         e.preventDefault();
         //复制评论表单
@@ -121,7 +126,7 @@ $(document).on('page:change', function() {
    // ajax删除
     $('.delete').on('click', function(e) {
          e.preventDefault();
-         var $t = $(e.target);
+         var $t = $(this);
          var href = $t.attr('href');
          $.post(href, { _method: 'delete' }, function(d) {
             $t.parents('.list-group-item').slideUp(function() {
@@ -139,12 +144,13 @@ $(document).on('page:change', function() {
 
 
     $('.delete-msg').on('click', function(e) {
-         var $t = $(e.target);
+         var $t = $(this);
          var href = $t.attr('href');
+         console.log(href);
          $.post(href, { msg_id: $t.data('id') } , function(data) {
              if(data == 's') {
-                 $t.parents('.list-group-item').slideUp(function() {
-                     $(this).remove();
+                 $t.parents('.list-group-item').first().slideUp(function() {
+                    $(this).remove();
                  });
              }
          });

@@ -1,6 +1,10 @@
 <% if get_u == @user %>
   <% content_for :d, flush: true  do %>
-    <li><%= link_to '删除', post_path(post), class: 'delete' %></li>
+    <li>
+      <%= link_to(post_path(post), { class: 'delete' }) do %>
+        <span class="glyphicon glyphicon-remove"></span>
+      <% end %>
+    </li>
   <% end %>
 <% else %>
   <% content_for :d, flush: true do %><% end %>

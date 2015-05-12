@@ -103,7 +103,7 @@ class UsersController < ApplicationController
       if params[:msg_id]
         msg_id = params[:msg_id].to_i
         @user.messages.find(msg_id).destroy
-        redirect_to messages_user_path(@user)
+        render plain: 's'
       else
         render 'show_messages'
       end  

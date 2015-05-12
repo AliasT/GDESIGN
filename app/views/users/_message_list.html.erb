@@ -3,7 +3,9 @@
   <div class="actual-action">
     <div>
       <%= link_to u.name, user_posts_path(u) %>
-      <%= link_to '删除', messages_user_path(message.user), data: { id: message.id }, class: 'delete-msg' %>
+      <%= link_to(messages_user_path(message.user), { data: { id: message.id }, class: 'delete-msg' }) do %>
+        <span class="glyphicon glyphicon-remove"></span>
+      <% end %>
     </div>
     <div class="resource-content"><%= content_for :content_type %></div>
     <div class="actual-content"><%= content_for :content %></div>

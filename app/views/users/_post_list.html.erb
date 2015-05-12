@@ -16,8 +16,8 @@
         <span class=""><%= ' ' + post.comments.count.to_s %></span>
       <% end %>
     </li>
-    <li data-source="<%= ups_post_path(post) %>">
-      <%= link_to('javascript:void(0);', { class: 'up' + get_class(post.ups, 'al-up', 'uper')}) do %>
+    <li>
+      <%= link_to(ups_post_path(post), { class: 'up' + get_class(post.ups, 'al-up', 'uper')}) do %>
         <span class="glyphicon glyphicon-thumbs-up"></span>
         <span><%= post.ups.count %></span>
       <% end %>

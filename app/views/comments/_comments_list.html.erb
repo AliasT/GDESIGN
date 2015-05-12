@@ -10,16 +10,23 @@
         <i class="clearfix"></i>
         <ul class="action clearfix nav list-group">
           <li class="comment-date"><%= c.created_at.to_s[0..-10] %></li>
-          <li><%= link_to '回复', subcomment_comment_path(c), class: 'sub-comment' %></li>
-          <!--<li><%= link_to '顶 ' + c.pluses.count.to_s, plus_comment_path(c), class: 'ding' + get_class(c.pluses, 'al-ding', 'pluser')%></li>-->
-          <li data-source="<%= plus_comment_path(c.post) %>">
-            <%= link_to('javascript:void(0);',{ class: 'ding' + get_class(c.pluses, 'al-ding', 'pluser') }) do %>
+          <li>
+            <%= link_to(subcomment_comment_path(c), { class: 'sub-comment', title: '回复' }) do %>
+              <span class="glyphicon glyphicon-edit"></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(plus_comment_path(c.post), { class: 'ding' + get_class(c.pluses, 'al-ding', 'pluser') }) do %>
               <span class="glyphicon glyphicon-chevron-up"></span>
               <span><%= c.pluses.count %></span>
             <% end %>
           </li>
           <% if get_u == User.find(c.commenter) %>
-            <li><%= link_to '删除', comment_path(c), class: 'delete delete-comment' %></li>
+            <li>
+              <%= link_to(comment_path(c), { class: 'delete delete-comment' }) do %>
+                <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
+            </li>
           <% end %>
         </ul>
       </li>

@@ -1,10 +1,4 @@
 <% info = '<em>抱歉已删除</em>'.html_safe %>
-
-
-
-
-
-
 <!--1.赞了某条post   2.直接@-->
 <% if message.m_type == 1 || message.m_type == 2%>
     <% t = message.m_type == 1 ? '赞了我':'提到了我' %>

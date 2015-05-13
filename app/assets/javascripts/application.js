@@ -253,8 +253,8 @@ $(document).on('page:change', function() {
             var t = setInterval(function() {
                 var count = $target.find('.glyphicon-ok').length;
                 if(count > 1 || (count == 1 && $target.find('.new-user-name').length == 1 )) {
-                    $target.submit();
                     clearInterval(t);
+                    $target.submit();
                 }
             }, 100);
         });

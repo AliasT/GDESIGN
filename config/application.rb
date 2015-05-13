@@ -27,7 +27,22 @@ module GDesign
     config.time_zone = 'Beijing'
     config.assets.logger = false
     config.middleware.use Rack::ContentLength
-    config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    config.assets.precompile  << /\.(?:svg|eot|woff|ttf)\z/
+
+    config.assets.precompile << Proc.new do |path|
+  if path =~ /\.(css|js)\z/
+    full_path = Rails.application.assets.resolve(path).to_path
+    app_assets_path = Rails.root.join('app', 'assets').to_path
+    if full_path.starts_with? app_assets_path
+      puts "including asset: " + full_path
+      true
+    else
+      puts "excluding asset: " + full_path
+      false
+    end
+  else
+    false
+  end
+end
+    
   end
 end

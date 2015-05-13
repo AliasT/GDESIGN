@@ -250,11 +250,11 @@ $(document).on('page:change', function() {
         $('.middle-form .btn').click(function(e) {
             e.preventDefault();
             var $target = $(this).parents('form');
-            var t = setTimeout(function() {
+            var t = setInterval(function() {
                 var count = $target.find('.glyphicon-ok').length;
                 if(count > 1 || (count == 1 && $target.find('.new-user-name').length == 1 )) {
                     $target.submit();
-                    clearTimeout(t);
+                    clearInterval(t);
                 }
             }, 100);
         });

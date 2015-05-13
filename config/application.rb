@@ -27,5 +27,6 @@ module GDesign
     config.time_zone = 'Beijing'
     config.assets.logger = false
     config.middleware.use Rack::ContentLength
+    config.assets.precompile  << /\.(?:svg|eot|woff|ttf)\z/
   end
 end

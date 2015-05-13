@@ -249,13 +249,14 @@ $(document).on('page:change', function() {
 
         $('.middle-form .btn').click(function(e) {
             e.preventDefault();
-            var $target = $(e.target).parents('form');
-            setTimeout(function() {
+            var $target = $(this).parents('form');
+            var t = setTimeout(function() {
                 var count = $target.find('.glyphicon-ok').length;
                 if(count > 1 || (count == 1 && $target.find('.new-user-name').length == 1 )) {
                     $target.submit();
+                    clearTimeout(t);
                 }
-            }, 400);
+            }, 100);
         });
     })();
 

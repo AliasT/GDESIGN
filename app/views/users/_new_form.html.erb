@@ -1,7 +1,18 @@
 
-
 <%= form_for @user.posts.new, url: user_posts_path(@user[:id]), html: { class: 'clearfix'} do |f| %>
     <!--<div class="content-area" contenteditable="true">a <span class="target-user">b</span> c d</div>-->
     <%= f.text_area :content, class: 'form-control content-area', autocomplete: 'off', resize: 'none' %>
-    <%= f.submit class: 'btn', type: 'submit', value: '发布', disabled: '' %>
+    <div class="form-group img-control">
+      <%= f.label :img, for: 'post_img', class: 'btn'  do %>
+        <span>图片</span>
+        <span class="glyphicon glyphicon-camera"></span>
+      <% end -%>
+      <%= f.file_field :img, style: 'display: none;'%>
+      <%= f.button class: 'btn', type: 'submit', disabled: '' do%>
+        <span>发布</span>
+        <span class="glyphicon glyphicon-edit"></span>
+      <% end %>
+    </div>
+    
+    
 <% end %>

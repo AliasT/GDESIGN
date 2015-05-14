@@ -3,11 +3,12 @@
   <div class="profile">
     <%= image_tag(post.user.avatar_url(:small), { class: 'avatar' }) %>
   </div>
-  <div class="post-content">
-    <div><%= link_to post.user.name, user_posts_path(post.user) %></div>  
+  <div class="post-content clearfix">
+    <div><%= link_to post.user.name, user_posts_path(post.user) %></div>
+    <hr />  
     <div><%= get_new_content(post.content).html_safe %></div>
+    <div class="img-container"><%= image_tag(post.img_url(:normal)) %></div>
   </div>
-  <i class="clearfix"></i>
   <ul class="action nav list-group clearfix">
     <li class="post-date"><%= post.created_at.to_s[0..-10] %></li>
     <li>
@@ -17,7 +18,7 @@
       <% end %>
     </li>
     <li>
-      <%= link_to(ups_post_path(post), { class: 'up' + get_class(post.ups, 'al-up', 'uper')}) do %>
+      <%= link_to(ups_post_path(post), { class: 'up' + get_class(post.ups, 'al-up', 'uper') }) do %>
         <span class="glyphicon glyphicon-thumbs-up"></span>
         <span><%= post.ups.count %></span>
       <% end %>

@@ -143,11 +143,14 @@ body {
 }
 
 
+
 .action {
   margin-top: 10px;
   li {
     float: right;
     a {
+      position: relative;
+      padding: 0 15px;
       &:hover, &:focus {
         background: #fff;
         span {
@@ -155,8 +158,17 @@ body {
         }
       }
       span+span {
-        position: relative;
-        top: -1px;
+
+        position: absolute;
+        right: 0px;
+        top: 0;
+        bottom: 0;
+        display: inline-block;
+        transition: transform 0.5s;
+        transition-timing-function: ease;
+        transform: scale(1);
+        border: 0;
+        text-align: center;
       }
       span {
         color: #B2B2B2;
@@ -164,11 +176,14 @@ body {
     }
   }
 
+  .popover-count {
+    transform: scale(2);
+  }
+
   .post-date, .comment-date {
     color: #e3e3e3;
     padding: 0;
     margin: auto;
-    line-height: 40px;
     float: left;
   }
 }
@@ -259,6 +274,14 @@ body {
   }
 }
 
+#new_post {
+  img {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+
 
 @media (max-width: 767px) {
   .col-md-2 .statics {
@@ -315,10 +338,6 @@ input[type="submit"] {
       }
     }
   }
-  input[type="submit"] {
-    float: right;
-    margin-top: 7px;
-  }
   
   
 //  联系人列表间隔
@@ -341,22 +360,49 @@ input[type="submit"] {
     }
   }
   
-  #new_post {
-    margin-bottom: 20px;
+  .img-control {
+    position: relative;
+    padding: 15px 0;
+    margin-bottom: 0px;
+    .btn {
+      background: #ddd;
+    }
+    .glyphicon {
+      top: 1px;
+    }
+    button {
+      float: right;
+    }
   }
+
+  #new_post {
+    
+  }
+
+
+
   .post-content {
     display: inline-block;
     padding: 0px 20px;
-    width: 85%;
-    @media (max-width:767px) {
-      width: 80%;
-    }                 
+    width: 90%;
+    hr {
+      margin: 0;
+      margin-bottom: 13px;
+    }
+    .img-container {
+      margin-top: 13px;
+    }
+    img {
+      border: solid 1px #F7F7F7;
+    }         
   }
+
   * {
     word-wrap: break-word;  /* never forget about */
   }
   .profile {
     float: left;
+    width: 32px;
     box-shadow: 0 0px 1px 1px #ccc;
     a {
       display: block;
@@ -367,6 +413,17 @@ input[type="submit"] {
   .comment-avatar {
     width: 32px;
     height: 32px;
+  }
+  
+  #new_comment {
+    .form-group {
+      margin: 0;
+    }
+    button {
+      float: right;
+      margin-top: 5px;
+    }
+    margin-bottom: 5px;
   }
 
   .comment-content {

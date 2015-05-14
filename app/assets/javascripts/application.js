@@ -69,12 +69,17 @@ $(document).on('page:change', function() {
                 var $span = $that.find('span').eq(1);
                 var v = parseInt($span.html());
                 $span.html(v + t);
+                $span.addClass('popover-count');
+                setTimeout(function() {
+                    $span.removeClass('popover-count');
+                }, 1000);
                 if(t==1) { 
-                    $that.addClass(classToApply); 
+                    $that.addClass(classToApply);
+
                 }
                 else {
-                 $that.removeClass(classToApply);
-             }
+                    $that.removeClass(classToApply);
+                }
             } else {
                 $('body').html($(data));
             }
@@ -92,15 +97,6 @@ $(document).on('page:change', function() {
     $('.ding').on('click', function(e) {
         changeStyle(e, 'al-ding','.ding');
     });
-
-
-    //$('.content-area').on('keypress', function(e) {
-    //  var l = $(this).text().length;
-    //  var d = $(this).children('div').length;
-    //  if(l > 100 || d > 1) {
-    //      $(this).css('overflow-y', 'scroll');
-    //  }
-    //});
 
 
     $('.sub-comment').on('click', function(e) {
@@ -188,11 +184,14 @@ $(document).on('page:change', function() {
 
     
     // 图片本地显示
-    var wUC = window.URL.createObjectURL;
+    var getImg = function(source, $target) {
+        var url = window.URL.createObjectURL(source);
+        $target.attr('src', url);
+    }
+
     $('#user_avatar').change(function(e) {
-        var file = e.target.files[0];
-        var url = wUC(file);
-        $('img.form-control').attr('src', url);
+        file = e.target.files[0];
+        getImg(file, $('img.form-control'));
     });
 
 
@@ -263,22 +262,53 @@ $(document).on('page:change', function() {
     // 发布ajax 获取渲染后的html
     (function() {
         $('#post_content').on('keyup', function() {
-            var $submit = $(this).siblings('input[type="submit"]');
+            var $submit = $(this).siblings('.form-group').children('button[type="submit"]');
             $submit.removeAttr('disabled');
             if($(this).val() == '') {
                 $submit.attr('disabled', 'disabled');
             }
         });
+        var img ;
+        $('#post_img').on('change', function(e) {
+            $(this).siblings('img').remove();
+            $(this).siblings('button').removeAttr('disabled');
+            var $that = $(this);
+            var $img = $('<img src="">');
+            var file = e.target.files[0];
+            img = file;
+            getImg(file, $img);
+            $img.prependTo($that.parent('.form-group'));
+            $(this).siblings('button').css('marginTop', '15px');
+        });
+
         $('#new_post').on('submit', function(e) {
             e.preventDefault();
             var href = $(this).attr('action');
+            var $that = $(this);
+            var data = new FormData($that.get(0))
             var text = $('.posts-count').html();
-            $.post(href, { post: { content: $('#post_content').val() }}, function(data) {
-                $(data).prependTo($('.col-md-6').children('.list-group')).hide().fadeIn();
-                $('.posts-count').html(text.replace(/\d+/, function(m) {
-                    return parseInt(m) + 1;
-                }));
-            });
+            // $.post(href, data , function(data) {
+            //     $(data).prependTo($('.col-md-6').children('.list-group')).hide().fadeIn();
+            //     $('.posts-count').html(text.replace(/\d+/, function(m) {
+            //         return parseInt(m) + 1;
+            //     }));
+            // });
+
+            $.ajax({
+                url: href,
+                type: 'POST',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    $(data).prependTo($('.col-md-6').children('.list-group')).hide().fadeIn();
+                    $('.posts-count').html(text.replace(/\d+/, function(m) {
+                        return parseInt(m) + 1;
+                    }));
+                }
+            })
+
         })
     })();
     

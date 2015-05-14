@@ -5,10 +5,12 @@ class PostsController < ApplicationController
   
   def create
     @user = get_user
-    content = params.require(:post).permit(:content)
-    @post = @user.posts.create(content)
-    send_to_all(content[:content], 2, @post.id)
-    render template: 'users/_post_list', locals: { post: @post}, layout: false
+    @post = @user.posts.new
+    @post.content = params[:post][:content]
+    @post.img = params[:post][:img]
+    @post.save()
+    send_to_all(@post.content, 2, @post.id)
+    render template: 'users/_post_list', locals: { post: @post }, layout: false
   end
 
 

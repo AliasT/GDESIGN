@@ -1,8 +1,11 @@
 <div class="comment-form clearfix">
   <%= form_for @post.comments.new, url: post_comments_path(@post.id) do |f| %>
-    <div class="form-group">
+    <div class="form-group clearfix">
       <%= f.text_field :content, class: 'form-control' %>
-      <%= f.submit type: 'submit', value: '评论', class: 'btn btn-default btn-comment' %>
+      <%= f.button type: 'submit', class: 'btn btn-comment' do %>
+        <span>评论</span>
+        <span class="glyphicon glyphicon-share"></span>
+      <% end %>    
     </div>
   <% end %>
 </div>

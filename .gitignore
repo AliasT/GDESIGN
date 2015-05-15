@@ -232,3 +232,5 @@ th-opt-lib/
 app/uploaders/avatar_uploader.rb
 db/schema.rb
 config/environments/development.rb
+app/uploaders/img_uploader.rb
+app/uploaders/img_uploader.rb

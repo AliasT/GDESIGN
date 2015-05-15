@@ -10,16 +10,17 @@ html {
 }
 
 body {
-  padding-top: 70px;
+  padding-top: 45px;
   @media (max-width: 767px) {
-    padding-top: 55px;
+    padding-top: 35px;
   }
   overflow-y: scroll;
   background: rgba(240, 248, 255, 0.36);
 }
 
 .navbar {
-  perspective: 600px;
+  padding-bottom: 2px;
+  min-height: 23px;
   background: rgb(28, 120, 200);
   .progress-bar-container {
     width: 100%;
@@ -35,13 +36,44 @@ body {
 
 .navbar-nav > li > a, .navbar-brand {
   color: #fff !important;
+  padding-top: 0px;
+  padding-bottom: 2px;
 }
+
+
 
 .navbar-form {
   border: none;
+  margin: 0 !important;
+  padding: 0;
+  .form-control {
+    height: auto;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    @media (max-width: 767px) {
+      & {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    }
+  }
+}
+
+.navbar-brand {
+  height: auto;
 }
 
 .navbar-toggle {
+  .icon-bar {
+    border-radius: 0;
+  }
+  margin-right: 7px;
+  border-radius: 0;
+  margin-top: 3px;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: middle;
   border: none;
   &:focus, &:active, &visited, &:hover {
     background: cornflowerblue !important;
@@ -52,19 +84,34 @@ body {
   border: none;
 }
 
+.btn {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
 @media (min-width: 767px) {
   .nav-link:after {
     position: absolute;
-    bottom: 0px;
-    left: 0;
-    right: 0;
-    border: solid #fff 2px;
+    bottom: -4px;
+    left: 12px;
+    right: 12px;
+    border: solid #fff 1px;
     content: ' ';
   }
 }
 
 .icon-bar {
   background-color: #fff !important;
+}
+
+@media (max-width: 767px) {
+  .navbar-nav > li > a, .navbar-brand {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .navbar-toggle {
+    margin-top: 7px;
+  }
 }
 
 .form-base {
@@ -93,7 +140,10 @@ body {
       width: 49%;
       margin: 3.5px;
       float: left;
-      .btn-info {
+      .btn {
+        background: #60d4d4;
+        box-shadow: 0 0px 1px 1px #ddd;
+        border: 0;
         margin: -1px;
         width: 50%;
       }
@@ -142,9 +192,12 @@ body {
   }
 }
 
-
+.col-md-6 > .list-group > .list-group-item {
+  padding-bottom: 5px;
+}
 
 .action {
+  box-shadow: none;
   margin-top: 10px;
   li {
     float: right;
@@ -330,7 +383,6 @@ input[type="submit"] {
   .list-group {
     margin-bottom: 0;
     .list-group-item {
-      box-shadow: 0 0 1px 1px rgba(90, 172, 244, 0.5) inset;
       border: none;
       .profile img {
         width: 32px;

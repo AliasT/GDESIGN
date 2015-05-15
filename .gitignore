@@ -229,3 +229,6 @@ Gemfile
 .env
 Gemfile
 th-opt-lib/
+app/uploaders/avatar_uploader.rb
+db/schema.rb
+config/environments/development.rb

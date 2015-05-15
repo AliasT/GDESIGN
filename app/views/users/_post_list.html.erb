@@ -5,9 +5,11 @@
   </div>
   <div class="post-content clearfix">
     <div><%= link_to post.user.name, user_posts_path(post.user) %></div>
-    <hr />  
-    <div><%= get_new_content(post.content).html_safe %></div>
-    <div class="img-container"><%= image_tag(post.img_url(:normal)) %></div>
+    <div class="post-content-container">
+      <div><%= get_new_content(post.content).html_safe %></div>
+      <div class="img-container"><%= image_tag(post.img_url(:normal)) %></div>
+    </div>
+    
   </div>
   <ul class="action nav list-group clearfix">
     <li class="post-date"><%= post.created_at.to_s[0..-10] %></li>

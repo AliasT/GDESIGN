@@ -141,7 +141,7 @@ body {
       margin: 3.5px;
       float: left;
       .btn {
-        background: #60d4d4;
+        background: #1c78c8;
         box-shadow: 0 0px 1px 1px #ddd;
         border: 0;
         margin: -1px;
@@ -163,13 +163,14 @@ body {
         color: rgb(218, 150, 150);
       }
       .form-title {
+        color: white;
         position: relative;
         margin: 0;
         margin: -40px -40px 20px -40px;
         text-align: center;
         box-shadow: 0 7px 10px 0px #8293D8;
         letter-spacing: 0.2em;
-        background: #60D4D4;
+        background: #1c78c8;
         
         &:after {
           content: '';
@@ -179,7 +180,7 @@ body {
           left: 0;
           right: 0;
           bottom: 0;
-          border-color: #60D4D4 transparent transparent transparent;
+          border-color: #1c78c8 transparent transparent transparent;
           border-width: 20px 188.5px 20px 188.5px;
           border-style: solid;
         }
@@ -224,7 +225,7 @@ body {
         text-align: center;
       }
       span {
-        color: #B2B2B2;
+        color: #e3e3e3;
       }
     }
   }
@@ -359,10 +360,6 @@ body {
   padding: 3px;
 }
 
-input[type="submit"] {
-  padding: 6px 20px;
-}
-
 
 .form-control {
   border-color: #66afe9;
@@ -379,11 +376,11 @@ input[type="submit"] {
 .col-md-6 {
   padding: 20px;
   border: solid 2px rgba(12, 95, 247, 0.3);
-  background: rgba(12, 95, 247, 0.02);
+  background: #eee;
   .list-group {
     margin-bottom: 0;
     .list-group-item {
-      border: none;
+      border: solid #ccc 1px;
       .profile img {
         width: 32px;
         height: 32px;
@@ -437,16 +434,29 @@ input[type="submit"] {
     display: inline-block;
     padding: 0px 20px;
     width: 90%;
-    hr {
-      margin: 0;
-      margin-bottom: 13px;
-    }
-    .img-container {
-      margin-top: 13px;
-    }
     img {
-      border: solid 1px #F7F7F7;
-    }         
+      box-shadow: 0 0 1px 1px #ccc;
+    }      
+    .post-content-container {
+      position: relative;
+      border: solid #e3e3e3 1px;
+      padding: 10px;
+      margin-top: 10px;
+      &:after {
+        border: solid 1px #ccc;
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+        position: absolute;
+        display: inline-block;
+        background: #fff;  
+        content: '';
+        width: 10px;
+        height: 10px;
+        transform: rotateZ(45deg);
+        left: 7px;
+        top: -5px;
+      }
+    }   
   }
 
   * {
@@ -455,7 +465,6 @@ input[type="submit"] {
   .profile {
     float: left;
     width: 32px;
-    box-shadow: 0 0px 1px 1px #ccc;
     a {
       display: block;
       text-align: center;

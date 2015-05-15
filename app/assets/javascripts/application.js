@@ -38,6 +38,9 @@ $(document).on('page:change', function() {
                         var total = e.total;
                         $bar.css('width', pos / total * 100 + '%');
                     }
+                    xhr.upload.onprogress = function() {
+                        console.log('1');
+                    }
                     return xhr;
                 } catch (e) {}
             }
@@ -125,14 +128,17 @@ $(document).on('page:change', function() {
          var $t = $(this);
          var href = $t.attr('href');
          $.post(href, { _method: 'delete' }, function(d) {
-            $t.parents('.list-group-item').slideUp(function() {
-                $(this).remove();
-                if(d == 's') {
-                    var text = $('.posts-count').html().match(/\d+/);
-                    $('.posts-count').html('发布 ' + (parseInt(text) - 1));
-                } else {
-                    var text = $('.comment').html();
-                    $('.comment').html(text.replace(/\d+/, function(m) { return parseInt(m) - 1; }))
+            $t.parents('.list-group-item').slideUp({
+                easing: 'easeInOutBounce',
+                complete: function() {
+                    $(this).remove();
+                    if(d == 's') {
+                        var text = $('.posts-count').html().match(/\d+/);
+                        $('.posts-count').html('发布 ' + (parseInt(text) - 1));
+                    } else {
+                        var text = $('.comment').html();
+                        $('.comment').html(text.replace(/\d+/, function(m) { return parseInt(m) - 1; }))
+                    }
                 }
             });
          });
@@ -145,8 +151,11 @@ $(document).on('page:change', function() {
          console.log(href);
          $.post(href, { msg_id: $t.data('id') } , function(data) {
              if(data == 's') {
-                 $t.parents('.list-group-item').first().slideUp(function() {
-                    $(this).remove();
+                 $t.parents('.list-group-item').first().slideUp({
+                    complete: function() {
+                        $(this).remove();
+                    },
+                    easing: 'easeInOutBounce'
                  });
              }
          });

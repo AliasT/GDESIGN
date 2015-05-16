@@ -5,22 +5,22 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   
-  include CarrierWave::MiniMagick
-  # include Cloudinary::CarrierWave
-
+  #include CarrierWave::MiniMagick
+  include Cloudinary::CarrierWave
+  
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    'uploads'
+    'upload'
   end
 
   def default_url
-    # 'http://res.cloudinary.com/xiaobing/image/upload/v1431255400/16_i6pwqe.png'
-    '/uploads/default.png'
+     'http://res.cloudinary.com/xiaobing/image/upload/v1431255400/16_i6pwqe.png'
+    #'/uploads/default.png'
   end
 
 

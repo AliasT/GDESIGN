@@ -1,25 +1,20 @@
-html {
-  
-}
-
 @font-face {
   font-family: 'Glyphicons Halflings';
-
   src: font-url('fonts/glyphicons-halflings-regular.eot');
   src: font-url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), font-url('fonts/glyphicons-halflings-regular.woff2') format('woff2'), font-url('fonts/glyphicons-halflings-regular.woff') format('woff'), font-url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), font-url('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
 body {
-  padding-top: 45px;
+  padding-top: 76px;
   @media (max-width: 767px) {
-    padding-top: 35px;
+    padding-top: 55px;
   }
   overflow-y: scroll;
-  background: rgba(240, 248, 255, 0.36);
+  background: #F8F8F8;
 }
 
+
 .navbar {
-  min-height: 23px;
   background: rgb(28, 120, 200);
   .progress-bar-container {
     width: 100%;
@@ -35,44 +30,18 @@ body {
 
 .navbar-nav > li > a, .navbar-brand {
   color: #fff !important;
-  padding-top: 3px;
-  padding-bottom: 5px;
 }
 
 
 .navbar-form {
   border: none;
-  margin: 0 !important;
-  padding: 0;
-  .form-control {
-    height: auto;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    @media (max-width: 767px) {
-      & {
-        padding-top: 4px;
-        padding-bottom: 4px;
-      }
-    }
-  }
 }
 
-.navbar-brand {
-  height: auto;
-}
 
 .navbar-toggle {
   .icon-bar {
     border-radius: 0;
   }
-  margin-right: 7px;
-  border-radius: 0;
-  margin-top: 3px;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  vertical-align: middle;
-  border: none;
   &:focus, &:active, &visited, &:hover {
     background: cornflowerblue !important;
   }
@@ -90,26 +59,16 @@ body {
 @media (min-width: 767px) {
   .nav-link:after {
     position: absolute;
-    bottom: -4px;
+    bottom: 0px;
     left: 12px;
     right: 12px;
-    border: solid #fff 1px;
+    border: solid #fff 2px;
     content: ' ';
   }
 }
 
 .icon-bar {
   background-color: #fff !important;
-}
-
-@media (max-width: 767px) {
-  .navbar-nav > li > a, .navbar-brand {
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-  .navbar-toggle {
-    margin-top: 7px;
-  }
 }
 
 .form-base {
@@ -261,7 +220,7 @@ body {
 }
 
 .list-group-item {
-  margin-bottom: 20px;
+  margin-bottom: 7px;
 }
 
 .col-md-2 {
@@ -349,6 +308,9 @@ body {
   }
 }
 
+a:focus {
+  outline: none;
+}
 
 .row {
   padding: 3px;
@@ -370,7 +332,6 @@ body {
 .col-md-6 {
   padding: 20px;
   border: solid 2px rgba(12, 95, 247, 0.3);
-  background: #eee;
   .list-group {
     margin-bottom: 0;
     .list-group-item {
@@ -422,7 +383,10 @@ body {
     
   }
 
-
+  .more-posts {
+    text-align: center;
+    display: block;
+  }
 
   .post-content {
     display: inline-block;

@@ -50,4 +50,11 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+
+  def get_posts(limit: 10, offset: 0)
+    query = 'SELECT posts.* FROM posts, followers WHERE posts.user_id = followers.user_id and 
+                           followers.fid = ? order by created_at desc limit ? offset ?'
+    Post.find_by_sql [query, @user[:id], limit, offset]
+  end
 end

@@ -1,13 +1,17 @@
 <div class="col-md-2 hidden-xs">
-  <%= render partial: 'users/statics', locals: { user: @user } %>
+  <%= render partial: 'users/statics', locals: { user: @post.user } %>
 </div>
 
 <div class="col-md-6 comments-index">
   <%= render partial: 'users/post', layout: 'users/post_list', locals: {post: @post} %>
   <%= render 'comment_form' %>
-  <%= render 'comments_list' %>
+  <ul class="list-group">
+    <%= render 'comments_list' %>
+    <% if @comments.size == 10 %>
+      <%= link_to '加载更多', '#more-posts-hash', { class: 'more-posts', id: 'more-posts-hash', data: { offset: 1 } } %>
+    <% end %> 
+  </ul>
 </div>
-
 
 <div class="col-md-4">
 

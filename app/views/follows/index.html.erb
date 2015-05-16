@@ -4,7 +4,7 @@
 
 <div class="col-md-6">
   <% if @user.followers.count - 1 == 0 %>
-    <div class="alert alert-info">还没有粉丝</div>
+    <div class="">还没有粉丝</div>
   <% else %>
     <div class="list-group followers-list">
     <% @user.followers.where.not(fid: @user.id).each do |f| %>

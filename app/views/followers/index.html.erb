@@ -4,7 +4,7 @@
 
 <div class="col-md-6">
   <% if Follower.where(fid: @user.id).count - 1 == 0 %>
-    <div class="alert alert-info">还没有关注的人</div>
+    <div>还没有关注的人</div>
   <% else %>
     <div class="list-group followers-list clearfix">
     <% Follower.where("fid = ? and user_id != ?", @user.id, @user.id).each do |f| %>

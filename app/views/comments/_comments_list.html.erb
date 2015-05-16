@@ -1,36 +1,34 @@
-<ul class="list-group">
-
-  <% get_order.each do |c|  %>
-      <li class="list-group-item">
-        <div class="profile"><%= image_tag(User.find(c.commenter).avatar.url(:small), { class: 'comment-avatar' }) %></div>
-        <div class="comment-content">
-          <div><%= link_to User.find(c.commenter).name, user_posts_path(c.commenter) %></div>
-          <div><%= get_new_content(c.content).html_safe %></div>
-        </div>
-        <i class="clearfix"></i>
-        <ul class="action clearfix nav list-group">
-          <li class="comment-date"><%= c.created_at.to_s[0..-10] %></li>
-          <li>
-            <%= link_to(subcomment_comment_path(c), { class: 'sub-comment', title: '回复' }) do %>
-              <span class="glyphicon glyphicon-edit"></span>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to(plus_comment_path(c.post), { class: 'ding' + get_class(c.pluses, 'al-ding', 'pluser') }) do %>
-              <span class="glyphicon glyphicon-chevron-up"></span>
-              <span><%= c.pluses.count %></span>
-            <% end %>
-          </li>
-          <% if get_u == User.find(c.commenter) %>
-            <li>
-              <%= link_to(comment_path(c), { class: 'delete delete-comment' }) do %>
-                <span class="glyphicon glyphicon-remove"></span>
-              <% end %>
-            </li>
+<% begin %>
+  <% @comments.each do |c|  %>
+    <li class="list-group-item">
+      <div class="profile"><%= image_tag(User.find(c.commenter).avatar.url(:small), { class: 'comment-avatar' }) %></div>
+      <div class="comment-content">
+        <div><%= link_to User.find(c.commenter).name, user_posts_path(c.commenter) %></div>
+        <div><%= get_new_content(c.content).html_safe %></div>
+      </div>
+      <i class="clearfix"></i>
+      <ul class="action clearfix nav list-group">
+        <li class="comment-date"><%= c.created_at.to_s[0..-10] %></li>
+        <li>
+          <%= link_to(subcomment_comment_path(c), { class: 'sub-comment', title: '回复' }) do %>
+            <span class="glyphicon glyphicon-edit"></span>
           <% end %>
-        </ul>
-      </li>
+        </li>
+        <li>
+          <%= link_to(plus_comment_path(c.post), { class: 'ding' + get_class(c.pluses, 'al-ding', 'pluser') }) do %>
+            <span class="glyphicon glyphicon-chevron-up"></span>
+            <span><%= c.pluses.count %></span>
+          <% end %>
+        </li>
+        <% if get_u == User.find(c.commenter) %>
+          <li>
+            <%= link_to(comment_path(c), { class: 'delete delete-comment' }) do %>
+              <span class="glyphicon glyphicon-remove"></span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
   <% end %>
-
-</ul>
-
+<% rescue %>
+<% end %>

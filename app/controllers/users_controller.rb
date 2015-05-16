@@ -73,10 +73,16 @@ class UsersController < ApplicationController
   def show
     if session[:signed].to_s != params[:id].to_s
       redirect_to user_posts_path(params[:id])
+    else
+      @user = User.find(params[:id])
+      if params[:offset]
+        @posts = get_posts(offset: params[:offset].to_i * 10)
+        p @posts
+        render template: 'users/p', layout: false
+      else
+        @p = get_posts()
+      end
     end
-    @user = User.find(params[:id])
-    @p = Post.find_by_sql ['SELECT posts.* FROM posts, followers WHERE posts.user_id = followers.user_id and 
-                           followers.fid = ? order by created_at desc', @user[:id]]
   end
 
 
@@ -104,7 +110,11 @@ class UsersController < ApplicationController
         msg_id = params[:msg_id].to_i
         @user.messages.find(msg_id).destroy
         render plain: 's'
+      elsif params[:offset]
+        @messages = get_messages(offset: params[:offset].to_i * 10)
+        render template: 'users/_messages', layout: false
       else
+        @messages = get_messages
         render 'show_messages'
       end  
     end
@@ -143,5 +153,9 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name, :password)
+    end
+
+    def get_messages(offset: 0)
+      @user.messages.order(created_at: :desc).limit(10).offset(offset)
     end
 end

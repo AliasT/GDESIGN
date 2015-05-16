@@ -329,4 +329,19 @@ $(document).on('page:change', function() {
         });
     })();
     
+
+    //加载更多
+    $('.more-posts').click(function() {
+        var $more = $(this);
+        var offset = $more.data('offset');
+        var href = window.location.pathname + '?offset=' + offset;
+        $.get(href, function(data) {
+            if(data.trim() !== '') {
+                $(data).insertBefore($more).show(400, 'easeOutSine');
+                $more.data('offset', parseInt(offset) + 1);
+            } else {
+                $more.remove();
+            }
+        });
+    })
 });

@@ -11,5 +11,8 @@
   <% posts = @p %>
   <ul class="list-group">
     <%= render partial: 'post', layout: 'post_list', collection: posts %>
+    <% if posts.size == 10 %>
+      <%= link_to '加载更多', '#more-posts-hash', { class: 'more-posts', id: 'more-posts-hash', data: { offset: 1 } } %>
+    <% end %>
   </ul>
 </div>

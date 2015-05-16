@@ -4,11 +4,14 @@
 
 
 <div class="col-md-6">
-  <% if @user.messages.count == 0 %>
-    <div class="alert alert-info">暂时没有任何消息</div>
+  <% if @messages.count == 0 %>
+    <div>暂时没有任何消息</div>
   <% else %>
       <ul class="list-group">
-        <%= render partial: 'message', layout: 'message_list', collection: @user.messages.order(created_at: :desc) %>
+        <%= render 'messages' %>
+        <% if @messages.size == 10 %>
+          <%= link_to '加载更多', '#more-posts-hash', { class: 'more-posts', id: 'more-posts-hash', data: { offset: 1 } } %>
+        <% end %> 
       </ul>
   <% end %>
 </div>

@@ -3,7 +3,16 @@ class CommentsController < ApplicationController
 
   def index
     @post = Post.find(params[:post_id])
-    @user = @post.user
+    if params[:offset]
+      @comments = get_comments(offset: params[:offset].to_i * 10)
+      render template: 'comments/_comments_list', layout: false
+    else
+      @comments = get_comments
+      puts '##########################'
+      puts 
+      puts '##########################'
+      
+    end
   end
 
 
@@ -45,4 +54,9 @@ class CommentsController < ApplicationController
     @comment.destroy
     render plain: 'c'
   end
+
+  private
+    def get_comments(offset: 0)
+      @post.comments.order(created_at: :desc).limit(10).offset(offset)
+    end
 end

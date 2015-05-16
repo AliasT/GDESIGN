@@ -5,8 +5,14 @@
 </div>
 
 <div class="col-md-6">
-  <ul class="list-group">
-    <% posts = @user.posts.order(created_at: :desc) %>
-    <%= render partial: 'post', layout: 'users/post_list', collection: posts %>
-  </ul>
+  <% if @posts.count == 0 %>
+    <div>暂时没有任何微博</div>
+  <% else %>
+    <ul class="list-group">
+      <%= render partial: 'post', layout: 'users/post_list', collection: @posts %>
+      <% if @posts.size == 10 %>
+        <%= link_to '加载更多', '#more-posts-hash', { class: 'more-posts', id: 'more-posts-hash', data: { offset: 1 } } %>
+      <% end %>  
+    </ul>
+  <% end %>
 </div>

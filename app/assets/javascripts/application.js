@@ -103,22 +103,31 @@ $(document).on('page:change', function() {
 
 
     $('.sub-comment').on('click', function(e) {
-        $('.sub-form').remove();
-        var $target = $(this);
-        var href = $target.attr('href');
         e.preventDefault();
-        //复制评论表单
-        $('.comment-form')
-            .clone()
-            .addClass('sub-form clearfix')
-            .appendTo($target.parents('.list-group-item'))
-            .hide()
-            .slideDown();
-        var link = $('.sub-form').siblings('.comment-content').find('a').first().html();
-        $('.sub-form').find('input[type="submit"]').val('回复');
-        $('.sub-form').find('input[type="text"]').val('回复@' + link + ' :');
-        var a = $('.sub-form form').attr('action');
-        $('.sub-form form').attr('action', a + '?refer_id=' + href.match(/\d+/)[0]);
+        var $that = $(this);
+        if($that.data('visiable') == 'yes') {
+            $that.parents('.action').siblings('.comment-form').fadeOut(400, 'easeOutSine', function() {
+                $(this).remove();
+                $that.data('visiable', 'no');
+            });
+        } else {
+            var href = $that.attr('href');
+            //复制评论表单
+            $('.comment-form')
+                .clone()
+                .addClass('sub-form clearfix')
+                .appendTo($that.parents('.list-group-item'))
+                .hide()
+                .fadeIn(400, 'easeOutSine', function() {
+                    $that.data('visiable', 'yes');
+                });
+            var link = $('.sub-form').siblings('.comment-content').find('a').first().html();
+            $('.sub-form').find('input[type="submit"]').val('回复');
+            $('.sub-form').find('input[type="text"]').val('回复@' + link + ' :');
+            var a = $('.sub-form form').attr('action');
+            $('.sub-form form').attr('action', a + '?refer_id=' + href.match(/\d+/)[0]);
+        }
+        
     });
 
 
@@ -128,7 +137,7 @@ $(document).on('page:change', function() {
          var $t = $(this);
          var href = $t.attr('href');
          $.post(href, { _method: 'delete' }, function(d) {
-            $t.parents('.list-group-item').slideUp({
+            $t.parents('.list-group-item').fadeOut({
                 easing: 'easeInOutBounce',
                 complete: function() {
                     $(this).remove();
@@ -151,7 +160,7 @@ $(document).on('page:change', function() {
          console.log(href);
          $.post(href, { msg_id: $t.data('id') } , function(data) {
              if(data == 's') {
-                 $t.parents('.list-group-item').first().slideUp({
+                 $t.parents('.list-group-item').first().fadeOut({
                     complete: function() {
                         $(this).remove();
                     },
@@ -316,9 +325,8 @@ $(document).on('page:change', function() {
                         return parseInt(m) + 1;
                     }));
                 }
-            })
-
-        })
+            });
+        });
     })();
     
 });

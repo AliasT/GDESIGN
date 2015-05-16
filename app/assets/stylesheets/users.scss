@@ -19,7 +19,6 @@ body {
 }
 
 .navbar {
-  padding-bottom: 2px;
   min-height: 23px;
   background: rgb(28, 120, 200);
   .progress-bar-container {
@@ -36,10 +35,9 @@ body {
 
 .navbar-nav > li > a, .navbar-brand {
   color: #fff !important;
-  padding-top: 0px;
-  padding-bottom: 2px;
+  padding-top: 3px;
+  padding-bottom: 5px;
 }
-
 
 
 .navbar-form {
@@ -281,10 +279,6 @@ body {
   li + li {
     margin-top: 0;
   }
-  border-color: cadetblue;
-  border-style: solid;
-  border-width: 1px 4px;
-  border-radius: 4px;
 }
 
 

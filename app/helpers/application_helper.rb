@@ -11,7 +11,7 @@ module ApplicationHelper
     if @u
       return user_posts_path(@u)
     else
-      return root_path
+      return signin_path
     end
   end
 

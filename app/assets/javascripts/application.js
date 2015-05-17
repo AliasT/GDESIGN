@@ -346,13 +346,13 @@ $(document).on('page:change', function() {
     });
 
     //comments sorting
+    var $listgroup = $('.col-md-6 > .list-group');
+    var $groupitem = $listgroup.children('.list-group-item');
+
     $('.sort-btn a').on('click', function() {
         var $target = $(this);
         var type = $target.attr('class').trim();
-        var $listgroup = $target.parent('.sort-btn').siblings('.list-group');
-        var $groupitem = $listgroup.children('.list-group-item');
-        var $result;
-
+        
         var getCount = function($param) {
             var count = $param.find('.ding').children('span').eq(1).html()
             return count;
@@ -362,13 +362,16 @@ $(document).on('page:change', function() {
          *      1. time: 比较节点comment-date的值   
          *      2. hot: 比较glyphicon-edit和glyphico-up的总和   
          */
+        var $result;
         if(type == 'hot') {
-            $result = $groupitem.sort(function(a, b) {
+            $result = $groupitem.slice().sort(function(a, b) {
                 return getCount($(b)) -getCount($(a));
             });
         } else {
+            console.log($groupitem);
             $result = $groupitem;
         }
         $result.fadeOut(100).appendTo($listgroup).fadeIn(400, 'easeOutSine');
+        $result = null;
     });
 });

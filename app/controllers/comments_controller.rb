@@ -8,10 +8,6 @@ class CommentsController < ApplicationController
       render template: 'comments/_comments_list', layout: false
     else
       @comments = get_comments
-      puts '##########################'
-      puts 
-      puts '##########################'
-      
     end
   end
 

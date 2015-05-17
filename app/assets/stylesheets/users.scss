@@ -15,6 +15,7 @@ body {
 
 
 .navbar {
+  min-height: 34px;
   background: rgb(28, 120, 200);
   .progress-bar-container {
     width: 100%;
@@ -28,17 +29,30 @@ body {
   }
 }
 
+.navbar-brand {
+  height:34px;
+}
+
 .navbar-nav > li > a, .navbar-brand {
   color: #fff !important;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 
 .navbar-form {
+  margin: 0;
+  .form-control {
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
   border: none;
 }
 
 
 .navbar-toggle {
+  margin-top: 0;
+  margin-bottom: 0;
   .icon-bar {
     border-radius: 0;
   }
